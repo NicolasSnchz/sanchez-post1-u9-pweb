@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>403 Acceso denegado</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<main>
+  <div class="tarjeta angosta">
+    <h1>403: Acceso denegado</h1>
+    <p>Su cuenta no tiene permiso para ver <strong th:text="${path}"></strong>.</p>
+    <a class="boton" th:href="@{/dashboard}">Volver al dashboard</a>
+  </div>
+</main>
+</body>
+</html>

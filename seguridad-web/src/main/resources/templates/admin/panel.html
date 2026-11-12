@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de administración</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header>
+  <strong>Seguridad Web: Administración</strong>
+  <nav>
+    <a th:href="@{/dashboard}">Dashboard</a>
+    <a th:href="@{/tareas}">Tareas</a>
+    <form th:action="@{/logout}" method="post" class="en-linea">
+      <button type="submit">Cerrar Sesión</button>
+    </form>
+  </nav>
+</header>
+<main>
+  <div class="tarjeta">
+    <h1>Usuarios registrados</h1>
+    <table>
+      <thead><tr><th>Id</th><th>Nombre</th><th>Correo</th><th>Rol</th><th>Activo</th></tr></thead>
+      <tbody>
+        <tr th:each="u : ${usuarios}">
+          <td th:text="${u.id}"></td>
+          <td th:text="${u.nombre}"></td>
+          <td th:text="${u.email}"></td>
+          <td><span class="etiqueta" th:text="${u.rol}"></span></td>
+          <td th:text="${u.activo} ? 'Sí' : 'No'"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tarjeta">
+    <h2>Todas las tareas</h2>
+    <table>
+      <thead><tr><th>Título</th><th>Propietario</th><th></th></tr></thead>
+      <tbody>
+        <tr th:each="t : ${tareas}">
+          <td th:text="${t.titulo}"></td>
+          <td th:text="${t.propietario.nombre}"></td>
+          <td>
+            <form th:action="@{/admin/tareas/{id}/eliminar(id=${t.id})}" method="post" class="en-linea">
+              <button type="submit" class="peligro">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(tareas)}"><td colspan="3" class="tenue">No hay tareas.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+</body>
+</html>

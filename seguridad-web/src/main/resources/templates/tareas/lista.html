@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tareas</title>
+  <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+<header>
+  <strong>Seguridad Web</strong>
+  <nav>
+    <a th:href="@{/dashboard}">Dashboard</a>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}">Panel de Administración</a>
+    <form th:action="@{/logout}" method="post" class="en-linea">
+      <button type="submit">Cerrar Sesión</button>
+    </form>
+  </nav>
+</header>
+<main>
+  <div class="tarjeta">
+    <h1>Buscar tareas</h1>
+    <form th:action="@{/tareas}" method="get" class="busqueda">
+      <input type="text" name="texto" th:value="${texto}" placeholder="Texto del título">
+      <button type="submit">Buscar</button>
+    </form>
+    <p class="tenue" th:if="${texto != null and !#strings.isEmpty(texto)}">
+      Resultados para <strong th:text="${texto}"></strong>: <span th:text="${#lists.size(tareas)}"></span>
+    </p>
+    <table>
+      <thead><tr><th>Título</th><th>Descripción</th><th>Propietario</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr th:each="t : ${tareas}">
+          <td th:text="${t.titulo}"></td>
+          <td th:text="${t.descripcion}"></td>
+          <td th:text="${t.propietario.nombre}"></td>
+          <td th:text="${t.completada} ? 'Completada' : 'Pendiente'"></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(tareas)}"><td colspan="4" class="tenue">No hay tareas para mostrar.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tarjeta">
+    <h2>Nueva tarea</h2>
+    <form th:action="@{/tareas}" th:object="${tarea}" method="post">
+      <label for="titulo">Título</label>
+      <input type="text" id="titulo" th:field="*{titulo}">
+      <div class="campo-error" th:if="${#fields.hasErrors('titulo')}" th:errors="*{titulo}"></div>
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" rows="2" th:field="*{descripcion}"></textarea>
+      <button type="submit">Crear tarea</button>
+    </form>
+  </div>
+</main>
+</body>
+</html>
