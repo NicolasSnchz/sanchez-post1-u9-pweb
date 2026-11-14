@@ -1,0 +1,39 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24474 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ---------------------< com.universidad:seguridad >----------------------
+[INFO] Building seguridad-web 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ seguridad ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ seguridad ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 10 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ seguridad ---
+[INFO] skip non existing resourceDirectory /tmp/tmp.5aHiY0oHOR/c-5e91c54f0f6ee4f624f84055cb89975a2376c310/seguridad-web/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ seguridad ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ seguridad ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ seguridad ---
+[INFO] Building jar: /tmp/tmp.5aHiY0oHOR/c-5e91c54f0f6ee4f624f84055cb89975a2376c310/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.2.12:repackage (repackage) @ seguridad ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Replacing main artifact /tmp/tmp.5aHiY0oHOR/c-5e91c54f0f6ee4f624f84055cb89975a2376c310/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /tmp/tmp.5aHiY0oHOR/c-5e91c54f0f6ee4f624f84055cb89975a2376c310/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.062 s
+[INFO] Finished at: 2026-11-14T00:30:52Z
+[INFO] ------------------------------------------------------------------------

@@ -1,0 +1,9 @@
+899f525 feat: proyecto Spring Boot con dependencias de Spring Security (parte 1) -> exit 0
+5e91c54 feat: entidades Usuario/Tarea, repositorios con @Query parametrizado y servicios con BCrypt (parte 1) -> exit 0
+6c412b4 feat: SecurityConfig con sesion, AuthController y vistas de login/dashboard con roles (parte 1) -> exit 0
+3ef0424 feat: agregar dependencia jjwt para autenticacion JWT (parte 2) -> exit 0
+b7c3343 feat: JwtUtil y JwtAuthFilter para validar tokens en cada peticion (parte 2) -> exit 0
+09f3680 feat: apiFilterChain stateless y endpoints REST protegidos con JWT (parte 2) -> exit 0
+2ce509a ci: flujo temporal para medir y capturar la evidencia con MySQL y un navegador real -> exit 0
+e212c2d build: agregar Maven Wrapper generado con el plugin oficial -> exit 0
+f575e1e ci: corregir la busqueda del flujo de evidencias y capturar terminales reales con xterm -> exit 0

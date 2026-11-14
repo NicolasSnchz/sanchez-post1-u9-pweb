@@ -1,0 +1,39 @@
+GET /dashboard sin sesion termina en http://localhost:8080/login
+captura login.png
+captura registro-exitoso.png
+captura dashboard-seguro.png
+HTML del saludo: Bienvenido, <span>&lt;script&gt;alert("XSS")&lt;/script&gt;</span>
+captura logout-ok.png
+captura tareas-usuario.png
+busqueda "' OR '1'='1" -> http://localhost:8080/tareas?texto=%27+OR+%271%27%3D%271 | Resultados para ' OR '1'='1: 0
+captura sql-injection-usuario.png
+captura admin-403.png
+captura dashboard-admin.png
+captura admin-panel.png
+busqueda "' OR '1'='1" -> http://localhost:8080/tareas?texto=%27+OR+%271%27%3D%271 | Resultados para ' OR '1'='1: 0
+captura sql-injection-mitigado.png
+busqueda "informe" -> http://localhost:8080/tareas?texto=informe | Resultados para informe: 2
+captura busqueda-normal.png
+despues de usar la API, el navegador sigue en http://localhost:8080/dashboard
+captura coexistencia.png
+dialogo de la pagina: alert XSS
+captura xss-utext.png
+HTML en la variante: 
+    <h1>Dashboard</h1>
+
+    <!-- SEGURO (version final que queda en el commit): th:text escapa el
+         contenido. Si usuario es "<script>alert(1)</script>", Thymeleaf lo
+         renderiza como &lt;script&gt;alert(1)&lt;/script&gt; y el navegador
+         lo muestra como texto plano, sin ejecutarlo. -->
+    <p>Bienvenido, <span>&lt;script&gt;alert("XSS")&lt;/script&gt;</span></p>
+
+    <p><script>alert("XSS")</script></p>
+    <!-- INSEGURO, SOLO PARA LA PRUEBA DEL PASO 8, luego se revierte:
+    Con th:utext, el mismo valor se inserta como HTML sin escapar: si
+    usuario contiene <script>alert(1)</script>, el navegador SI lo
+    ejecuta. Esta es la linea que se activa temporalmente para el
+    Checkpoint 2 y luego se vuelve a comentar. -->
+
+    <p class="tenue">Correo: <span>xss@universidad.edu</span></p>
+    <p>Roles: <span class="etiqueta">ROLE_USER</span></p>
+  

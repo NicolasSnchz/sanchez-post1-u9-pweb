@@ -1,0 +1,8 @@
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----+---------------------------------+-----------------------+
+| id | titulo                          | propietario           |
++----+---------------------------------+-----------------------+
+|  1 | Revisar informe de costos       | pedro@universidad.edu |
+|  2 | Preparar informe de laboratorio | laura@universidad.edu |
+|  3 | Estudiar Spring Security        | laura@universidad.edu |
++----+---------------------------------+-----------------------+

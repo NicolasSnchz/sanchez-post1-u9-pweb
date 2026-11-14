@@ -1,0 +1,120 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24474 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ---------------------< com.universidad:seguridad >----------------------
+[INFO] Building seguridad-web 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ seguridad ---
+[INFO] Deleting /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ seguridad ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 7 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ seguridad ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 22 source files with javac [debug parameters release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ seguridad ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ seguridad ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 6 source files with javac [debug parameters release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ seguridad ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.universidad.seguridad.SeguridadSesionTest
+00:32:27.591 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.universidad.seguridad.SeguridadSesionTest]: SeguridadSesionTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:32:27.728 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.universidad.seguridad.SeguridadApplication for test class com.universidad.seguridad.SeguridadSesionTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-14T00:32:28.140Z  INFO 7026 --- [           main] c.u.seguridad.SeguridadSesionTest        : Starting SeguridadSesionTest using Java 23.0.2 with PID 7026 (started by runner in /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web)
+2026-11-14T00:32:28.151Z  INFO 7026 --- [           main] c.u.seguridad.SeguridadSesionTest        : No active profile set, falling back to 1 default profile: "default"
+2026-11-14T00:32:28.924Z  INFO 7026 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T00:32:28.984Z  INFO 7026 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 2 JPA repository interfaces.
+2026-11-14T00:32:29.545Z  INFO 7026 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T00:32:29.594Z  INFO 7026 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
+2026-11-14T00:32:29.625Z  INFO 7026 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T00:32:29.829Z  INFO 7026 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T00:32:29.853Z  INFO 7026 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T00:32:30.031Z  INFO 7026 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:seguridad user=SA
+2026-11-14T00:32:30.032Z  INFO 7026 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T00:32:30.804Z  INFO 7026 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T00:32:30.839Z  INFO 7026 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T00:32:31.210Z  INFO 7026 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T00:32:31.859Z  INFO 7026 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/api/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@167da81d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@24c6a471, org.springframework.security.web.context.SecurityContextHolderFilter@42bb0492, org.springframework.security.web.header.HeaderWriterFilter@67b6cb6e, org.springframework.security.web.authentication.logout.LogoutFilter@7c3920a7, com.universidad.seguridad.security.JwtAuthFilter@5fc44b4b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4377b35b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@104972a0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1fce17b8, org.springframework.security.web.session.SessionManagementFilter@3d123d10, org.springframework.security.web.access.ExceptionTranslationFilter@3c0640fa, org.springframework.security.web.access.intercept.AuthorizationFilter@37b0a724]
+2026-11-14T00:32:31.880Z  INFO 7026 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@591be976, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@520f1862, org.springframework.security.web.context.SecurityContextHolderFilter@37e99c0f, org.springframework.security.web.header.HeaderWriterFilter@46823e8, org.springframework.security.web.csrf.CsrfFilter@5fd8302e, org.springframework.security.web.authentication.logout.LogoutFilter@7d5a3b06, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@75b57ecd, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@29ae939c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@439acac0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@40f53ea, org.springframework.security.web.access.ExceptionTranslationFilter@20894afb, org.springframework.security.web.access.intercept.AuthorizationFilter@35ec675e]
+2026-11-14T00:32:32.204Z  INFO 7026 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-14T00:32:32.205Z  INFO 7026 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-14T00:32:32.206Z  INFO 7026 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-14T00:32:32.229Z  INFO 7026 --- [           main] c.u.seguridad.SeguridadSesionTest        : Started SeguridadSesionTest in 4.344 seconds (process running for 5.456)
+2026-11-14T00:32:33.727Z  WARN 7026 --- [           main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/logout' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 22.36 s -- in com.universidad.seguridad.SeguridadSesionTest
+[INFO] Running com.universidad.seguridad.ApiJwtTest
+2026-11-14T00:32:49.749Z  INFO 7026 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.universidad.seguridad.ApiJwtTest]: ApiJwtTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-14T00:32:49.753Z  INFO 7026 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.universidad.seguridad.SeguridadApplication for test class com.universidad.seguridad.ApiJwtTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.77 s -- in com.universidad.seguridad.ApiJwtTest
+[INFO] Running com.universidad.seguridad.security.JwtUtilTest
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in com.universidad.seguridad.security.JwtUtilTest
+[INFO] Running com.universidad.seguridad.TareaServiceSeguridadTest
+2026-11-14T00:33:01.537Z  INFO 7026 --- [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.universidad.seguridad.TareaServiceSeguridadTest]: TareaServiceSeguridadTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-14T00:33:01.538Z  INFO 7026 --- [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.universidad.seguridad.SeguridadApplication for test class com.universidad.seguridad.TareaServiceSeguridadTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-14T00:33:01.561Z  INFO 7026 --- [           main] c.u.seguridad.TareaServiceSeguridadTest  : Starting TareaServiceSeguridadTest using Java 23.0.2 with PID 7026 (started by runner in /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web)
+2026-11-14T00:33:01.561Z  INFO 7026 --- [           main] c.u.seguridad.TareaServiceSeguridadTest  : No active profile set, falling back to 1 default profile: "default"
+2026-11-14T00:33:01.692Z  INFO 7026 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T00:33:01.702Z  INFO 7026 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 2 JPA repository interfaces.
+2026-11-14T00:33:01.811Z  INFO 7026 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T00:33:01.812Z  INFO 7026 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T00:33:01.816Z  INFO 7026 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T00:33:01.816Z  INFO 7026 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-11-14T00:33:01.817Z  INFO 7026 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:seguridad user=SA
+2026-11-14T00:33:01.818Z  INFO 7026 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-11-14T00:33:01.874Z  INFO 7026 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T00:33:01.879Z  INFO 7026 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T00:33:02.027Z  INFO 7026 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/api/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@12973dd3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@71d81a3e, org.springframework.security.web.context.SecurityContextHolderFilter@746a671, org.springframework.security.web.header.HeaderWriterFilter@4cbeae45, org.springframework.security.web.authentication.logout.LogoutFilter@6a6129a6, com.universidad.seguridad.security.JwtAuthFilter@4d026a3a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@44c66c7b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d332e20, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7546033d, org.springframework.security.web.session.SessionManagementFilter@22b0f013, org.springframework.security.web.access.ExceptionTranslationFilter@214c51eb, org.springframework.security.web.access.intercept.AuthorizationFilter@79155a9d]
+2026-11-14T00:33:02.036Z  INFO 7026 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@745f4c49, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2631075f, org.springframework.security.web.context.SecurityContextHolderFilter@7f57925d, org.springframework.security.web.header.HeaderWriterFilter@19a13874, org.springframework.security.web.csrf.CsrfFilter@549eeaa3, org.springframework.security.web.authentication.logout.LogoutFilter@69ca48bf, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4feb7abb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c3fb4e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a3e0f7a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@427b8fe4, org.springframework.security.web.access.ExceptionTranslationFilter@2bd9b7cc, org.springframework.security.web.access.intercept.AuthorizationFilter@27cda5f]
+2026-11-14T00:33:02.136Z  INFO 7026 --- [           main] c.u.seguridad.TareaServiceSeguridadTest  : Started TareaServiceSeguridadTest in 0.594 seconds (process running for 35.363)
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.166 s -- in com.universidad.seguridad.TareaServiceSeguridadTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 36, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ seguridad ---
+[INFO] Building jar: /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.2.12:repackage (repackage) @ seguridad ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[INFO] Replacing main artifact /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web/target/seguridad-0.0.1-SNAPSHOT.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  43.775 s
+[INFO] Finished at: 2026-11-14T00:33:06Z
+[INFO] ------------------------------------------------------------------------

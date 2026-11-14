@@ -1,0 +1,70 @@
+[INFO] Scanning for projects...
+[INFO] Loaded 24474 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ---------------------< com.universidad:seguridad >----------------------
+[INFO] Building seguridad-web 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ seguridad ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 7 resources from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ seguridad ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ seguridad ---
+[INFO] Copying 1 resource from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ seguridad ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ seguridad ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.universidad.seguridad.GenerarHash
+00:33:10.872 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.universidad.seguridad.GenerarHash]: GenerarHash does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:33:10.983 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.universidad.seguridad.SeguridadApplication for test class com.universidad.seguridad.GenerarHash
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::               (v3.2.12)
+
+2026-11-14T00:33:11.330Z  INFO 7373 --- [           main] com.universidad.seguridad.GenerarHash    : Starting GenerarHash using Java 17.0.21 with PID 7373 (started by runner in /home/runner/work/sanchez-post1-u9-pweb/sanchez-post1-u9-pweb/seguridad-web)
+2026-11-14T00:33:11.331Z  INFO 7373 --- [           main] com.universidad.seguridad.GenerarHash    : No active profile set, falling back to 1 default profile: "default"
+2026-11-14T00:33:12.109Z  INFO 7373 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-11-14T00:33:12.182Z  INFO 7373 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 2 JPA repository interfaces.
+2026-11-14T00:33:12.739Z  INFO 7373 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-11-14T00:33:12.792Z  INFO 7373 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.10.Final
+2026-11-14T00:33:12.825Z  INFO 7373 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-11-14T00:33:13.053Z  INFO 7373 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-11-14T00:33:13.079Z  INFO 7373 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-11-14T00:33:13.264Z  INFO 7373 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:seguridad user=SA
+2026-11-14T00:33:13.265Z  INFO 7373 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-11-14T00:33:14.083Z  INFO 7373 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-11-14T00:33:14.118Z  INFO 7373 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-11-14T00:33:14.533Z  INFO 7373 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-11-14T00:33:15.211Z  INFO 7373 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/api/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b9b57d9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2762bd70, org.springframework.security.web.context.SecurityContextHolderFilter@2a6dfbb2, org.springframework.security.web.header.HeaderWriterFilter@7cf618f3, org.springframework.security.web.authentication.logout.LogoutFilter@5effc15d, com.universidad.seguridad.security.JwtAuthFilter@49de2cc4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3dab9366, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d343793, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b94c22d, org.springframework.security.web.session.SessionManagementFilter@609a996f, org.springframework.security.web.access.ExceptionTranslationFilter@7c58c10f, org.springframework.security.web.access.intercept.AuthorizationFilter@4c24063c]
+2026-11-14T00:33:15.232Z  INFO 7373 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure Or [Mvc [pattern='/**']] with [org.springframework.security.web.session.DisableEncodeUrlFilter@a43a21e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@ebe3561, org.springframework.security.web.context.SecurityContextHolderFilter@764bf20d, org.springframework.security.web.header.HeaderWriterFilter@17e03804, org.springframework.security.web.csrf.CsrfFilter@2c6b36d7, org.springframework.security.web.authentication.logout.LogoutFilter@270663e2, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1ececb56, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@363bf9d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@184218af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d3cb276, org.springframework.security.web.access.ExceptionTranslationFilter@3f1485c3, org.springframework.security.web.access.intercept.AuthorizationFilter@31084f37]
+2026-11-14T00:33:15.536Z  INFO 7373 --- [           main] com.universidad.seguridad.GenerarHash    : Started GenerarHash in 4.441 seconds (process running for 5.329)
+HASH_ADMIN=$2a$12$tCefIhkucjxP2oTE/BtIme8kzmNLer/gxvt1sEaX3YINjln7bdVOW
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.715 s -- in com.universidad.seguridad.GenerarHash
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.892 s
+[INFO] Finished at: 2026-11-14T00:33:16Z
+[INFO] ------------------------------------------------------------------------

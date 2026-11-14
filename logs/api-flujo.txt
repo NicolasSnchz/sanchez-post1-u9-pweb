@@ -1,0 +1,35 @@
+$ curl -X POST /api/auth/login -d {"email":"admin@universidad.edu","contrasenia":"admin123"}
+{"token":"eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkB1bml2ZXJzaWRhZC5lZHUiLCJ1aWQiOjEsInJvbCI6IlJPTEVfQURNSU4iLCJpYXQiOjE3OTQ2MTY1NDIsImV4cCI6MTc5NDYyMDE0Mn0.5hWvJ6RVgOzyLArcVKaCpBzZEgl5Zn4iXKbM1L_64jC4nIAyNWCaKRL4ojdZQoFG","email":"admin@universidad.edu","rol":"ROLE_ADMIN"}
+HTTP 200
+
+$ curl /api/tareas -H "Authorization: Bearer <token del admin>"
+[]
+HTTP 200
+
+$ curl /api/tareas                                   # sin token
+{"error":"Se requiere un token JWT valido"}
+HTTP 401
+
+$ curl /api/tareas -H "Authorization: Bearer <token con un caracter de la firma cambiado>"
+{"error":"Se requiere un token JWT valido"}
+HTTP 401
+
+$ curl -X POST /api/auth/login -d {"email":"admin@universidad.edu","contrasenia":"incorrecta"}
+{"error":"Credenciales invalidas"}
+HTTP 401
+
+$ curl /api/tareas -H "Authorization: Bearer <token de laura, ROLE_USER>"
+[{"id":2,"titulo":"Preparar informe de laboratorio","descripcion":"Capturas y README","completada":false},{"id":3,"titulo":"Estudiar Spring Security","descripcion":"Filtros y sesiones","completada":false}]
+HTTP 200
+
+$ curl /api/admin/usuarios -H "Authorization: Bearer <token de laura, ROLE_USER>"
+{"error":"El rol del token no permite este recurso"}
+HTTP 403
+
+$ curl /api/admin/usuarios -H "Authorization: Bearer <token del admin>"
+[{"id":1,"nombre":"Administrador","email":"admin@universidad.edu","rol":"ROLE_ADMIN","activo":true},{"id":2,"nombre":"<script>alert(\"XSS\")</script>","email":"xss@universidad.edu","rol":"ROLE_USER","activo":true},{"id":3,"nombre":"Pedro Rojas","email":"pedro@universidad.edu","rol":"ROLE_USER","activo":true},{"id":4,"nombre":"Laura Gomez","email":"laura@universidad.edu","rol":"ROLE_USER","activo":true}]
+HTTP 200
+
+$ curl -i /api/tareas -H "Authorization: Bearer <token del admin>"   # cabeceras: sin Set-Cookie
+HTTP/1.1 200 
+Content-Type: application/json

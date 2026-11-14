@@ -1,0 +1,30 @@
+$ curl -i -X POST http://localhost:8080/logout          # sin sesion y sin token CSRF
+HTTP/1.1 403 
+Set-Cookie: JSESSIONID=B115801F895323678F8D9636E7ECF29C; Path=/; HttpOnly
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sat, 14 Nov 2026 00:35:41 GMT
+
+
+# Ahora con una sesion valida de laura (cookie JSESSIONID), pero sin token CSRF:
+$ curl -i -X POST http://localhost:8080/logout -b "JSESSIONID=..."
+HTTP/1.1 403 
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sat, 14 Nov 2026 00:35:42 GMT
+
+{"timestamp":"2026-11-14T00:35:42.275+00:00","status":403,"error":"Forbidden","path":"/logout"}
+$ curl -i http://localhost:8080/dashboard -b "JSESSIONID=..."   # la sesion sigue viva
+HTTP 200

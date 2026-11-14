@@ -1,0 +1,11 @@
+Linea activada en la variante temporal: <p th:utext="${usuario}"></p>
+<h1>Dashboard</h1>
+
+    <!-- SEGURO (version final que queda en el commit): th:text escapa el
+         contenido. Si usuario es "<script>alert(1)</script>", Thymeleaf lo
+         renderiza como &lt;script&gt;alert(1)&lt;/script&gt; y el navegador
+         lo muestra como texto plano, sin ejecutarlo. -->
+    <p>Bienvenido, <span th:text="${usuario}"></span></p>
+
+    <p th:utext="${usuario}"></p>
+    

@@ -1,0 +1,9 @@
+mysql: [Warning] Using a password on the command line interface can be insecure.
++----+-------------------------------+-----------------------+-------------------------------+-------+------------+
+| id | nombre                        | email                 | contrasenia_inicio            | largo | rol        |
++----+-------------------------------+-----------------------+-------------------------------+-------+------------+
+|  1 | Administrador                 | admin@universidad.edu | $2a$12$tCefIhkucjxP2oTE/BtIme |    60 | ROLE_ADMIN |
+|  2 | <script>alert("XSS")</script> | xss@universidad.edu   | $2a$12$ORlm9G6pwBK9i96F6sL6de |    60 | ROLE_USER  |
+|  3 | Pedro Rojas                   | pedro@universidad.edu | $2a$12$bIivjsYIoHYd49SDWBYP5e |    60 | ROLE_USER  |
+|  4 | Laura Gomez                   | laura@universidad.edu | $2a$12$1107siJ5B8Au2E3R6qoTvu |    60 | ROLE_USER  |
++----+-------------------------------+-----------------------+-------------------------------+-------+------------+

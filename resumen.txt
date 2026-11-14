@@ -1,0 +1,14 @@
+compila-09f3680 -> 0
+compila-2ce509a -> 0
+compila-3ef0424 -> 0
+compila-5e91c54 -> 0
+compila-6c412b4 -> 0
+compila-899f525 -> 0
+compila-b7c3343 -> 0
+compila-e212c2d -> 0
+compila-f575e1e -> 0
+empaquetar-utext -> 0
+empaquetar -> 0
+generar-hash -> 0
+pruebas-jdk17 -> 0
+pruebas-jdk23 -> 0
