@@ -1,0 +1,11 @@
+# Checkpoint 1 (Parte 2): POST /api/auth/login con el ADMIN creado en la Parte 1
+R=$(curl -s -X POST http://localhost:8080/api/auth/login -H 'Content-Type: application/json' -d '{"email":"admin@universidad.edu","contrasenia":"admin123"}' -w '\nHTTP %{http_code}')
+echo "$R"
+
+# El token tiene tres partes separadas por puntos: cabecera, datos (claims) y firma HMAC.
+# Cabecera y datos decodificados (exp - iat = 3600 s, una hora):
+TOKEN=$(echo "$R" | head -1 | jq -r .token)
+python3 -c "import sys,base64,json; [print(json.loads(base64.urlsafe_b64decode(p + '=' * (-len(p) % 4)))) for p in sys.argv[1].split('.')[:2]]" "$TOKEN"
+
+# Misma peticion con una clave incorrecta: 401 y ningun token
+curl -s -X POST http://localhost:8080/api/auth/login -H 'Content-Type: application/json' -d '{"email":"admin@universidad.edu","contrasenia":"incorrecta"}' -w '\nHTTP %{http_code}\n'

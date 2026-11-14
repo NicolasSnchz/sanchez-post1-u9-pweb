@@ -34,9 +34,12 @@ async function paso(nombre, fn) {
     await p.fill('#titulo', titulo); await p.fill('#descripcion', descripcion);
     await p.click('text=Crear tarea'); await p.waitForLoadState();
   };
+  // Envia el formulario con su propio boton y espera a que la URL lleve ?texto=
   const buscar = async (texto) => {
     await p.goto(`${B}/tareas`); await p.fill('input[name=texto]', texto);
-    await p.click('text=Buscar'); await p.waitForLoadState();
+    await Promise.all([p.waitForURL(/texto=/), p.click('form.busqueda button[type=submit]')]);
+    await p.waitForLoadState();
+    console.log(`busqueda "${texto}" ->`, p.url(), '|', (await p.textContent('p.tenue')).replace(/\s+/g, ' ').trim());
   };
 
   await paso('redireccion al login', async () => {
@@ -67,8 +70,7 @@ async function paso(nombre, fn) {
     await crearTarea('Preparar informe de laboratorio', 'Capturas y README');
     await crearTarea('Estudiar Spring Security', 'Filtros y sesiones');
     await espera(500); pantalla('tareas-usuario.png');
-    await buscar("' OR '1'='1"); await espera(500); pantalla('sql-injection-mitigado.png');
-    await buscar('informe'); await espera(500); pantalla('busqueda-normal.png');
+    await buscar("' OR '1'='1"); await espera(500); pantalla('sql-injection-usuario.png');
   });
   await paso('usuario sin permiso en /admin', async () => {
     await p.goto(`${B}/admin`); await espera(800); pantalla('admin-403.png');
@@ -78,6 +80,10 @@ async function paso(nombre, fn) {
     await entrar('admin@universidad.edu', 'admin123'); await espera(800);
     pantalla('dashboard-admin.png');
     await p.goto(`${B}/admin`); await espera(800); pantalla('admin-panel.png');
+    // Busqueda global del ADMIN (buscarPorTitulo de la guia): la consulta que, concatenada,
+    // devolveria las tres tareas de todos los usuarios
+    await buscar("' OR '1'='1"); await espera(500); pantalla('sql-injection-mitigado.png');
+    await buscar('informe'); await espera(500); pantalla('busqueda-normal.png');
     await p.goto(`${B}/dashboard`); await espera(500);
   });
   await paso('convivencia de sesion y JWT', async () => {

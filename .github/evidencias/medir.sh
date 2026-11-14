@@ -66,11 +66,21 @@ correr empaquetar-utext "$TRABAJO/variante-utext" "$J17" -DskipTests clean packa
 echo $! > "$TRABAJO/app-utext.pid"
 esperar_arranque "$SALIDA/logs/app-utext.log" || echo "la variante no arranco" >> "$SALIDA/logs/errores.txt"
 
+# 5b. La misma aplicacion (mismo jar, misma clave y misma base) en el puerto 8082, con tokens de 3 segundos:
+#     emite el token que despues se prueba ya expirado contra el puerto 8080
+JWT_EXPIRACION_MS=3000 "$J17/bin/java" -jar "$TRABAJO/app.jar" --server.port=8082 > "$SALIDA/logs/app-8082.log" 2>&1 &
+echo $! > "$TRABAJO/app-8082.pid"
+esperar_arranque "$SALIDA/logs/app-8082.log" || echo "la instancia 8082 no arranco" >> "$SALIDA/logs/errores.txt"
+
 # 6. Navegador real (Chromium con ventana, sobre Xvfb): todo el recorrido de la Parte 1 y la convivencia
 (cd "$RUNNER_TEMP" && NODE_PATH="$RUNNER_TEMP/node_modules" xvfb-run -a -s "-screen 0 1366x900x24" \
     node "$H/navegar.js" "$SALIDA/capturas" "$H/api-flujo.sh") > "$SALIDA/logs/navegador.log" 2>&1
 
-# 7. Terminal: CSRF, API JWT y los hashes en MySQL
+# 7. Terminales reales (xterm) para CSRF, JWT, BCrypt en MySQL y la suite con ./mvnw
+(cd "$REPO" && JAVA_HOME=$J17 PATH="$J17/bin:$PATH" xvfb-run -a -s "-screen 0 1366x900x24" \
+    bash "$H/terminales.sh" "$SALIDA/capturas" "$TRABAJO") > "$SALIDA/logs/terminales.log" 2>&1
+
+# 8. Los mismos flujos en texto plano, para el registro
 bash "$H/csrf.sh" > "$SALIDA/logs/csrf.txt" 2>&1
 bash "$H/api-flujo.sh" > "$SALIDA/logs/api-flujo.txt" 2>&1
 $MYSQL -t -e "SELECT id, nombre, email, LEFT(contrasenia, 29) AS contrasenia_inicio, LENGTH(contrasenia) AS largo, rol FROM usuarios;" \
@@ -78,6 +88,6 @@ $MYSQL -t -e "SELECT id, nombre, email, LEFT(contrasenia, 29) AS contrasenia_ini
 $MYSQL -t -e "SELECT t.id, t.titulo, u.email AS propietario FROM tareas t JOIN usuarios u ON u.id = t.usuario_id;" \
     > "$SALIDA/logs/mysql-tareas.txt" 2>&1
 
-kill "$(cat "$TRABAJO/app.pid")" "$(cat "$TRABAJO/app-utext.pid")" 2>/dev/null
+kill "$(cat "$TRABAJO/app.pid")" "$(cat "$TRABAJO/app-utext.pid")" "$(cat "$TRABAJO/app-8082.pid")" 2>/dev/null
 for f in "$SALIDA"/logs/*.exit; do echo "$(basename "$f" .exit) -> $(cat "$f")"; done > "$SALIDA/resumen.txt"
 cat "$SALIDA/resumen.txt" "$SALIDA/compilacion-por-commit.txt"

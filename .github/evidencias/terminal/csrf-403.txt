@@ -1,0 +1,17 @@
+# Checkpoint 3 (Parte 1): CSRF sigue activo en webFilterChain, la cadena de sesion
+# 1. POST a /logout sin sesion y sin token CSRF
+curl -s -o /dev/null -w 'HTTP %{http_code}\n' -X POST http://localhost:8080/logout
+
+# 2. Login de laura con el formulario, enviando el token CSRF que trae la pagina de login
+CSRF=$(curl -s -c /tmp/sesion http://localhost:8080/login | grep -o 'name="_csrf" value="[^"]*"' | head -1 | cut -d'"' -f4)
+curl -s -b /tmp/sesion -c /tmp/sesion -o /dev/null -w 'HTTP %{http_code} -> %{redirect_url}\n' -X POST http://localhost:8080/login --data-urlencode username=laura@universidad.edu --data-urlencode password=clave-laura-1 --data-urlencode "_csrf=$CSRF"
+
+# 3. Con la cookie de sesion de laura pero SIN token CSRF (lo que haria un formulario de otro sitio): 403
+curl -s -b /tmp/sesion -o /dev/null -w 'HTTP %{http_code}\n' -X POST http://localhost:8080/logout
+
+# 4. La sesion sigue viva: la peticion falsificada no cerro nada
+curl -s -b /tmp/sesion -o /dev/null -w 'HTTP %{http_code}\n' http://localhost:8080/dashboard
+
+# 5. Logout normal, con el token que Thymeleaf incluye en el formulario del dashboard: 302 a /login?logout
+CSRF=$(curl -s -b /tmp/sesion http://localhost:8080/dashboard | grep -o 'name="_csrf" value="[^"]*"' | head -1 | cut -d'"' -f4)
+curl -s -b /tmp/sesion -o /dev/null -w 'HTTP %{http_code} -> %{redirect_url}\n' -X POST http://localhost:8080/logout --data-urlencode "_csrf=$CSRF"

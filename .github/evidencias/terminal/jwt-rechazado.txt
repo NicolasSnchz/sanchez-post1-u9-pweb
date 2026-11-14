@@ -1,0 +1,19 @@
+# Checkpoint 2 (Parte 2): peticiones rechazadas por apiFilterChain
+TOKEN=$(curl -s -X POST http://localhost:8080/api/auth/login -H 'Content-Type: application/json' -d '{"email":"laura@universidad.edu","contrasenia":"clave-laura-1"}' | jq -r .token)
+
+# 1. Sin header Authorization: 401
+curl -s http://localhost:8080/api/tareas -w '\nHTTP %{http_code}\n'
+
+# 2. Token con un caracter de la firma cambiado: 401
+i=$(( ${#TOKEN} - 10 )); [ "${TOKEN:$i:1}" = A ] && c=B || c=A; ALTERADO="${TOKEN:0:$i}$c${TOKEN:$((i+1))}"
+echo "original: ...${TOKEN: -16}"; echo "alterado: ...${ALTERADO: -16}"
+curl -s http://localhost:8080/api/tareas -H "Authorization: Bearer $ALTERADO" -w '\nHTTP %{http_code}\n'
+
+# 3. Token expirado: otra instancia de la misma app (puerto 8082, misma clave, JWT_EXPIRACION_MS=3000) emite tokens de 3 s
+CORTO=$(curl -s -X POST http://localhost:8082/api/auth/login -H 'Content-Type: application/json' -d '{"email":"laura@universidad.edu","contrasenia":"clave-laura-1"}' | jq -r .token)
+curl -s -o /dev/null http://localhost:8080/api/tareas -H "Authorization: Bearer $CORTO" -w 'recien emitido: HTTP %{http_code}\n'
+sleep 4
+curl -s http://localhost:8080/api/tareas -H "Authorization: Bearer $CORTO" -w '\nHTTP %{http_code}\n'
+
+# 4. Token valido de un ROLE_USER contra /api/admin/**: 403 (autenticado, pero sin el rol)
+curl -s http://localhost:8080/api/admin/usuarios -H "Authorization: Bearer $TOKEN" -w '\nHTTP %{http_code}\n'

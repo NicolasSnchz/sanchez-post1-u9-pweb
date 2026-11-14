@@ -38,7 +38,7 @@ jobs:
           cache: maven
       - name: Herramientas del navegador
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq xterm xvfb imagemagick jq > /dev/null
+          sudo apt-get update -qq && sudo apt-get install -y -qq xterm xvfb x11-utils imagemagick jq > /dev/null
           cd "$RUNNER_TEMP" && npm install --silent playwright@1.49.1 && npx playwright install --with-deps chromium > /dev/null
       - name: Medir y capturar
         run: bash .github/evidencias/medir.sh
