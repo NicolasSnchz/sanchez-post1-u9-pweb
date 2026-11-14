@@ -1,3 +1,0 @@
-# Checkpoint 1 (Parte 1): en MySQL las contrasenas quedan como hash BCrypt de costo 12 ($2a$12$..., 60 caracteres)
-# El ADMIN se inserto a mano con el hash del Paso 8; los otros tres se registraron desde /registro
-mysql -h 127.0.0.1 -u appuser seguridad_db -e "SELECT id, nombre, email, contrasenia, rol, activo FROM usuarios"

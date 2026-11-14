@@ -1,3 +1,0 @@
-# Suite automatica con el Maven Wrapper: sesion, roles, BCrypt, XSS, SQL Injection, CSRF y JWT
-cd seguridad-web
-./mvnw -B -ntp test | grep -E 'Tests run:|BUILD|Total time'
